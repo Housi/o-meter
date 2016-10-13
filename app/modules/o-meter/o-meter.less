@@ -1,0 +1,62 @@
+@bodyColor: #ffffff;
+@bgColor: #232526;
+@lowValueColor: #00dbde;
+@highValueColor: #fc00ff;
+
+.o-meter {
+  font-family: 'Merriweather', serif;
+  background: linear-gradient(to top, @bgColor , lighten(@bgColor,20%));
+  color: @bodyColor;
+  max-height: 100%;
+  max-width: 100%;
+  padding: 2em;
+  box-sizing: border-box;
+
+  &__text {
+    fill: @bodyColor;
+    text-anchor: middle;
+    font-weight: 300;
+    font-size: 2em;
+
+    &--main {
+      font-size: 4em;
+    }
+  }
+
+  &__needle {
+    stroke-width: 4;
+    stroke: @bodyColor;
+    transition: all 2s ease-in-out;
+
+    &__pin {
+      fill: none;
+      stroke: @bodyColor;
+      stroke-width: 4;
+    }
+  }
+
+  &__value {
+    stroke: url('#o-meter__gradient');
+    stroke-width: 16;
+    fill: none;
+    filter: url('#o-meter__glow');
+  }
+
+  &__guides {
+    stroke: lighten(@bgColor,40%);
+    stroke-width: 32;
+    stroke-dasharray: 1,21;
+    fill: none;
+  }
+
+  &__gradient {
+
+    &__start {
+      stop-color: @lowValueColor;
+    }
+
+    &__end {
+      stop-color: @highValueColor;
+    }
+  }
+}
